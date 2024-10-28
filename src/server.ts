@@ -4,6 +4,8 @@ import routes from "./routes";
 
 const app = Fastify({ logger: true });
 
+//server principal
+
 const start = async () => {
   await app.register(cors);
   await app.register(routes);

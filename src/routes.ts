@@ -6,6 +6,10 @@ import {
   FastifyReply,
 } from "fastify";
 
+import { CreateCustomerController } from "./controllers/CreateCustomerController";
+
+//rota com fastify
+
 export const routes = async (
   fastify: FastifyInstance,
   options: FastifyPluginOptions
@@ -13,6 +17,13 @@ export const routes = async (
   fastify.get("/home", async (request: FastifyRequest, reply: FastifyReply) => {
     return { ok: true };
   });
+
+  fastify.post(
+    "/customer",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new CreateCustomerController().handle(request, reply);
+    }
+  );
 };
 
 export default routes;
