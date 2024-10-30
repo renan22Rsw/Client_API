@@ -8,6 +8,7 @@ import {
 
 import { CreateCustomerController } from "./controllers/CreateCustomerController";
 import { ListCustomersController } from "./controllers/ListCustomersController";
+import { DeleteCustomerControler } from "./controllers/DeleteCustomersController";
 
 //rota com fastify
 
@@ -30,6 +31,13 @@ export const routes = async (
     "/customers",
     async (request: FastifyRequest, reply: FastifyReply) => {
       return new ListCustomersController().handle(request, reply);
+    }
+  );
+
+  fastify.delete(
+    "/customer",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new DeleteCustomerControler().handle(request, reply);
     }
   );
 };
